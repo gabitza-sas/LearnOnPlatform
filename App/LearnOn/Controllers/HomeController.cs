@@ -11,7 +11,6 @@ namespace LearnOn.Controllers
     {
         public ActionResult Index()
         {
-            new LearnOnContext();
             return View();
         }
 
