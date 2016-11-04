@@ -17,7 +17,7 @@ namespace LearnOn.App_Start
             builder.EntitySet<Course>("Courses");
             config.MapODataServiceRoute(
                 routeName: "ODataRoute",
-                routePrefix: null,
+                routePrefix: "odata",
                 model: builder.GetEdmModel());
         }
 
