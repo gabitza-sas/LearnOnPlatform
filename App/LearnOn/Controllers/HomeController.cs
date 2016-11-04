@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LearnOn.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -10,6 +11,7 @@ namespace LearnOn.Controllers
     {
         public ActionResult Index()
         {
+            new LearnOnContext();
             return View();
         }
 

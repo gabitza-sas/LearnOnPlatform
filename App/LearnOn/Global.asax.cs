@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LearnOn.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -12,6 +13,11 @@ namespace LearnOn
     {
         protected void Application_Start()
         {
+            using (var db = new LearnOnContext())
+            {
+                db.Database.Initialize(false);
+            }
+
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
