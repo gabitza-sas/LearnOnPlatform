@@ -12,6 +12,6 @@ namespace LearnOn.Models
         : base("LearnOnContext")
         {
         }
-        DbSet<Course> Courses { get; set; }
+        public DbSet<Course> Courses { get; set; }
     }
 }
