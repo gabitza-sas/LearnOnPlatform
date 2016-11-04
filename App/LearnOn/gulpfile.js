@@ -10,7 +10,7 @@ gulp.task('clean', function () {
         .pipe(clean());
 });
 
-gulp.task("scriptsNStyles", () => {
+gulp.task("scriptsNStyles", function () {
     gulp.src([
             'core-js/client/**',
             'systemjs/dist/system.src.js',
@@ -19,7 +19,7 @@ gulp.task("scriptsNStyles", () => {
             'zone.js/dist/**',
             '@angular/**',
             'jquery/dist/jquery.*js',
-            'bootstrap/dist/js/bootstrap.*js'            
+            'bootstrap/dist/js/bootstrap.*js'
     ], {
         cwd: "node_modules/**"
     })
