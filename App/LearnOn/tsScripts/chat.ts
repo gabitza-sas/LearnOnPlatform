@@ -13,9 +13,9 @@ export class ChatComponent {
         $(() => this.initialize());
     }
     public initialize() {
-        var chat = $.connection.chatHub;
-        chat.client.receiveMessage = this.receiveMessage.bind(this);
-        chat.server.sendMessage("Test");
+        //var chat = $.connection.chatHub;
+        //chat.client.receiveMessage = this.receiveMessage.bind(this);
+        //chat.server.sendMessage("Test");
     }
     public receiveMessage(message: string) {
         // Html encode display name and message. 
