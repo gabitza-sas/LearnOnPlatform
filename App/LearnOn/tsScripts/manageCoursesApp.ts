@@ -6,7 +6,7 @@
 import { Component } from '@angular/core';
 import { NgModule } from '@angular/core';
 import { Injectable } from '@angular/core';
-import { Http, Response } from '@angular/http';
+import { Http, Response, HttpModule } from '@angular/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 
@@ -33,7 +33,6 @@ export class ManageCoursesComponent {
 
     getOneNoty(id: number) {
         return this._http.get('/odata/Courses')
-            .lift((response: Response) => response.json())
             .subscribe((value) => {
                 alert('a');
             });
@@ -42,7 +41,7 @@ export class ManageCoursesComponent {
 }
 
 @NgModule({
-    imports: [BrowserModule],
+    imports: [BrowserModule, HttpModule],
     declarations: [ManageCoursesComponent],
     bootstrap: [ManageCoursesComponent]
 })

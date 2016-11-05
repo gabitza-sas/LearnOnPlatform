@@ -296,6 +296,10 @@
       <LastGenOutput>TypeLite.Net4.d.ts</LastGenOutput>
     </Content>
     <Content Include="Scripts\_references.js" />
+    <Content Include="tsScripts\myVideo.html" />
+    <Content Include="tsScripts\chat.html" />
+    <Content Include="tsScripts\notes.html" />
+    <Content Include="Web.config" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -311,7 +315,9 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Home\Index.cshtml">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="typings.json" />
     <Content Include="tsScripts\tsconfig.json" />
     <Content Include="Scripts\jquery-3.1.1.slim.min.map" />
@@ -334,6 +340,7 @@
     <Content Include="Views\Manage\ManageLogins.cshtml" />
     <Content Include="Views\Manage\SetPassword.cshtml" />
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
+    <Content Include="tsScripts\app.html" />
     <Content Include="tsScripts\Manager.ttinclude" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\ManageCourses\Index.cshtml" />
@@ -346,6 +353,9 @@
     <None Include="Project_Readme.html" />
   </ItemGroup>
   <ItemGroup>
+    <TypeScriptCompile Include="tsScripts\myVideo.ts" />
+    <TypeScriptCompile Include="tsScripts\chat.ts" />
+    <TypeScriptCompile Include="tsScripts\notes.ts" />
     <TypeScriptCompile Include="tsScripts\Enums.ts">
       <DependentUpon>TypeLite.Net4.tt</DependentUpon>
     </TypeScriptCompile>
@@ -358,6 +368,7 @@
     <TypeScriptCompile Include="tsScripts\app.ts" />
     <TypeScriptCompile Include="tsScripts\boot.ts" />
     <TypeScriptCompile Include="tsScripts\main.ts" />
+    <TypeScriptCompile Include="tsScripts\Video.d.ts" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
