@@ -24,8 +24,8 @@ var NotesComponent = (function () {
             _this.onModalHide();
         });
         this.refreshNotesList();
-        clearInterval(this.interval);
-        this.interval = setInterval(function () { return _this.activeNoteChecker(); }, 500);
+        clearInterval(CourseService_1.CourseService.courseInterval);
+        CourseService_1.CourseService.courseInterval = setInterval(function () { return _this.activeNoteChecker(); }, 1500);
     };
     NotesComponent.prototype.refreshNotesList = function () {
         var _this = this;
@@ -104,3 +104,4 @@ var NotesComponent = (function () {
     return NotesComponent;
 }());
 exports.NotesComponent = NotesComponent;
+//# sourceMappingURL=notes.js.map

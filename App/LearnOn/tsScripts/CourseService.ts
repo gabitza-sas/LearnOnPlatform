@@ -4,6 +4,7 @@
 export class CourseService  {
     private selectedCourse: LearnOn.Models.Course;
 
+    static courseInterval: number;
     static instance: CourseService;
     static isCreating: Boolean = false;
 

@@ -19,9 +19,6 @@ var HomeComponent = (function () {
         this.coursesUrl = "/odata/Courses";
         this.showView = false;
     }
-    HomeComponent.prototype.myValueChange = function (event) {
-        console.log(event);
-    };
     HomeComponent.prototype.ngOnInit = function () {
         var _this = this;
         this._http.get(this.coursesUrl)
@@ -65,3 +62,4 @@ var HomeComponent = (function () {
     return HomeComponent;
 }());
 exports.HomeComponent = HomeComponent;
+//# sourceMappingURL=home.js.map

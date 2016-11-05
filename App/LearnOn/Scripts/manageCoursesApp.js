@@ -55,3 +55,4 @@ var ManageCoursesModule = (function () {
 exports.ManageCoursesModule = ManageCoursesModule;
 var platform = platform_browser_dynamic_1.platformBrowserDynamic();
 platform.bootstrapModule(ManageCoursesModule);
+//# sourceMappingURL=manageCoursesApp.js.map

@@ -30,9 +30,8 @@ export class NotesComponent {
         });
 
         this.refreshNotesList();
-
-        clearInterval(this.interval);
-        this.interval = setInterval(() => this.activeNoteChecker(), 500);
+        clearInterval(CourseService.courseInterval);
+        CourseService.courseInterval = setInterval(() => this.activeNoteChecker(), 1500);
     }
     
     refreshNotesList() {
