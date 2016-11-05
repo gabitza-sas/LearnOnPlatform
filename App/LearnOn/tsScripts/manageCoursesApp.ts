@@ -12,7 +12,7 @@ import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 
 @Component({
     selector: 'manage-courses',
-    template: `    
+    template: `
     <h2>My favorite skill is: {{myskills}}</h2>
     <p>Skill:</p>
     <ul>

@@ -15,21 +15,33 @@ var core_1 = require('@angular/core');
 var ChatComponent = (function () {
     function ChatComponent() {
         var _this = this;
+        this.messages = [];
+        this.newMessage = "";
+        this.courseId = 1;
         $(function () { return _this.initialize(); });
     }
     ChatComponent.prototype.initialize = function () {
-        //var chat = $.connection.chatHub;
-        //chat.client.receiveMessage = this.receiveMessage.bind(this);
-        //chat.server.sendMessage("Test");
+        var _this = this;
+        var chat = $.connection.chatHub;
+        chat.client.receiveMessage = this.receiveMessage.bind(this);
+        this.server = chat.server;
+        $.connection.hub.start()
+            .then(function () {
+            chat.server.joinCourse(_this.courseId);
+            chat.server.sendMessage("Test");
+        });
     };
     ChatComponent.prototype.receiveMessage = function (message) {
-        // Html encode display name and message. 
-        var encodedName = $('<div />').text(name).html();
-        var encodedMsg = $('<div />').text(message).html();
-        // Add the message to the page. 
-        $('#discussion').append('<li><strong>' + encodedName
-            + '</strong>:&nbsp;&nbsp;' + encodedMsg + '</li>');
+        this.messages.push(message);
     };
+    ChatComponent.prototype.sendMessage = function () {
+        this.server.sendMessage(this.newMessage);
+        this.newMessage = "";
+    };
+    __decorate([
+        core_1.Input(), 
+        __metadata('design:type', String)
+    ], ChatComponent.prototype, "newMessage", void 0);
     ChatComponent = __decorate([
         core_1.Component({
             selector: 'chat',
@@ -40,4 +52,3 @@ var ChatComponent = (function () {
     return ChatComponent;
 }());
 exports.ChatComponent = ChatComponent;
-//# sourceMappingURL=chat.js.map

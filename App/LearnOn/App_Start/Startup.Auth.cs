@@ -18,6 +18,7 @@ namespace LearnOn.App_Start
         public void Configuration(IAppBuilder app)
         {
             ConfigureAuth(app);
+            ConfigureSignalR(app);
         }
 
         // Enable the application to use OAuthAuthorization. You can then secure your Web APIs

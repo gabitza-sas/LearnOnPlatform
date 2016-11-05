@@ -1,2 +1,8 @@
 ﻿<h2>Titian's Chatting</h2>
-<button (click)="toggleVideo()">Toggle</button>
+<textarea cols="30" rows="4" [(ngModel)]="newMessage"></textarea>
+<button (click)="sendMessage()">Send</button>
+<ul>
+    <li *ngFor="let m of messages">
+        {{ m.UserName }} : {{ m. Text }}
+    </li>
+</ul>
