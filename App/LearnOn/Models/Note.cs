@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LearnOn.Controllers.Odata;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
@@ -6,7 +7,7 @@ using System.Web;
 
 namespace LearnOn.Models
 {
-    public class Note
+    public class Note : IODataEntity
     {
         public int Id { get; set; }
 
