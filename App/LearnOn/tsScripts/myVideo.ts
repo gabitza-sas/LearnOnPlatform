@@ -16,7 +16,10 @@ export class MyVideoComponent implements OnInit {
 
     ngOnInit() {
         var currentCourse = CourseService.getInstance().getSelectedCourse();
-        this.myPlayer = videojs("vidRTMP", { src: currentCourse.CourseVideo }, function() { });
+        
+        this.myPlayer = videojs("vidRTMP", {}, function () { });
+        var src: VideoJSSource = { type: 'rtmp/mp4', src: currentCourse.CourseVideo };
+        this.myPlayer.src(src);
     }
 
     toggleVideo() {

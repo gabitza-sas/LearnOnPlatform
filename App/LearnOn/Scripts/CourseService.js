@@ -37,4 +37,3 @@ var CourseService = (function () {
     return CourseService;
 }());
 exports.CourseService = CourseService;
-//# sourceMappingURL=CourseService.js.map

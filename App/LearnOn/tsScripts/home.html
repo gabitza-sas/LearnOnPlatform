@@ -14,13 +14,23 @@
         </div>
         <div class="col-md-6">
             <searchNotes></searchNotes>
+             <p>There are no upcoming events. PLease check again later!</p>
         </div>
     </div>
 </div>
 
 <div *ngIf="showView">
     <div class="row">
-        <button (click)="goBack()">Back</button>
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <div class="col-md-2">
+                    <button (click)="goBack()" class="btn btn-info">Back</button>
+                </div>
+                <div class="col-md-10">
+                    <h3 class="text-danger" >{{courseName}}</h3>
+                </div>
+            </div>
+        </div>
     </div>
     <div class="row">
         <div class="col-md-8">
