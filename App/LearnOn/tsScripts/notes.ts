@@ -33,7 +33,7 @@ export class NotesComponent {
 
     saveNote() {
         //let note: note
-        this._http.post('/odata/Notes/post', "")
+        this._http.post('/odata/Notes', "")
             .subscribe((value) => {
                 alert(value);
             });
