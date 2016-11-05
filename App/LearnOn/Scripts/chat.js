@@ -61,3 +61,4 @@ var ChatComponent = (function () {
     return ChatComponent;
 }());
 exports.ChatComponent = ChatComponent;
+//# sourceMappingURL=chat.js.map
