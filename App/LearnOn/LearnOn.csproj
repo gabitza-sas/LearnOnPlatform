@@ -248,6 +248,10 @@
     <Compile Include="Migrations\201611050923286_AddedNotes.Designer.cs">
       <DependentUpon>201611050923286_AddedNotes.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201611051337593_changedNote.cs" />
+    <Compile Include="Migrations\201611051337593_changedNote.Designer.cs">
+      <DependentUpon>201611051337593_changedNote.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\201611051216309_addedCourseNameUrl.cs" />
     <Compile Include="Migrations\201611051216309_addedCourseNameUrl.Designer.cs">
       <DependentUpon>201611051216309_addedCourseNameUrl.cs</DependentUpon>
@@ -368,6 +372,7 @@
     <None Include="Project_Readme.html" />
   </ItemGroup>
   <ItemGroup>
+    <TypeScriptCompile Include="tsScripts\InterfaceJQuery.d.ts" />
     <TypeScriptCompile Include="tsScripts\home.ts" />
     <TypeScriptCompile Include="tsScripts\myVideo.ts" />
     <TypeScriptCompile Include="tsScripts\chat.ts" />
@@ -400,6 +405,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201611050923286_AddedNotes.resx">
       <DependentUpon>201611050923286_AddedNotes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201611051337593_changedNote.resx">
+      <DependentUpon>201611051337593_changedNote.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201611051216309_addedCourseNameUrl.resx">
       <DependentUpon>201611051216309_addedCourseNameUrl.cs</DependentUpon>
