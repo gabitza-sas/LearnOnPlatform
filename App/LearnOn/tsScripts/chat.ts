@@ -7,6 +7,7 @@ import { NgModule } from '@angular/core';
 import * as moment from 'moment';
 import { Http, Response, HttpModule } from '@angular/http';
 import { BrowserModule } from '@angular/platform-browser';
+import { CourseService } from './CourseService';
 import Vm = LearnOn.Controllers.Odata;
 
 @Component({
@@ -21,8 +22,8 @@ export class ChatComponent {
     server: IChatHubServer
     refTime = new Date();
     totalMessageCount = 0;
-    constructor(private http: Http) {
-        this.courseId = 1;
+    constructor(private http: Http, private courseService: CourseService) {
+        this.courseId = CourseService.instance.getSelectedCourse().CourseId;
         $(() => this.initialize());
     }
     public initialize() {

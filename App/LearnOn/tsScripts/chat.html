@@ -5,7 +5,7 @@
     </div>
     <div >
         <button (click)="cancelMessage()" class="btn btn-primary spacing">Cancel</button>
-        <button (click)="sendMessage()"  class="btn btn-primary spacing">Send</button>
+        <button (click)="sendMessage()" [disabled]="newMessage == ''" class="btn btn-primary spacing">Send</button>
     </div>
 </div>
 <div class="text-muted">
@@ -23,4 +23,4 @@
         </div>
     </div>
 </div>
-<button (click)="showMore()" disabled="{{ (!isLoading) }}" class="btn btn-primary col-lg-12">Show More</button>
+<button (click)="showMore()" [disabled]="isLoading" class="btn btn-primary col-lg-12">Show More</button>

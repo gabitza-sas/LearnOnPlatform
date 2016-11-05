@@ -14,17 +14,19 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var moment = require('moment');
 var http_1 = require('@angular/http');
+var CourseService_1 = require('./CourseService');
 var ChatComponent = (function () {
-    function ChatComponent(http) {
+    function ChatComponent(http, courseService) {
         var _this = this;
         this.http = http;
+        this.courseService = courseService;
         this.takeCount = 5;
         this.messages = [];
         this.newMessage = "";
         this.refTime = new Date();
         this.totalMessageCount = 0;
         this.isLoading = false;
-        this.courseId = 1;
+        this.courseId = CourseService_1.CourseService.instance.getSelectedCourse().CourseId;
         $(function () { return _this.initialize(); });
     }
     ChatComponent.prototype.initialize = function () {
@@ -87,7 +89,7 @@ var ChatComponent = (function () {
             selector: 'chat',
             templateUrl: '../tsScripts/chat.html'
         }), 
-        __metadata('design:paramtypes', [http_1.Http])
+        __metadata('design:paramtypes', [http_1.Http, CourseService_1.CourseService])
     ], ChatComponent);
     return ChatComponent;
 }());
