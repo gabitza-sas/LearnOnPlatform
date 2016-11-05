@@ -5,10 +5,10 @@ import { AppComponent } from './app';
 import { ChatComponent } from './chat';
 import { MyVideoComponent } from './myVideo';
 import { NotesComponent } from './notes';
-
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
-    imports: [BrowserModule],
+    imports: [BrowserModule, FormsModule],
     declarations: [AppComponent, ChatComponent, MyVideoComponent, NotesComponent],
     bootstrap: [AppComponent]
 })

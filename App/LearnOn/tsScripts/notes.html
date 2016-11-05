@@ -8,18 +8,18 @@
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
-                <h4 class="modal-title" id="exampleModalLabel"><input ng-value="timeVideo" />dd note @</h4>
+                <h4 class="modal-title" id="exampleModalLabel">Add note @ {{currentTimeFormatted}}</h4>
             </div>
             <div class="modal-body">
                 <form>
                     <div class="form-group">
-                        <label for="message-text" class="form-control-label">Note text:</label>
-                        <textarea class="form-control" id="message-text"></textarea>
+                        <label for="message-text" class="form-control-label">Comment:</label>
+                        <textarea class="form-control" [(ngModel)]="noteComment" name="noteComment"></textarea>
                     </div>
                 </form>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-primary">Save</button>
+                <button (click)="saveNote()">Save</button>
             </div>
         </div>
     </div>

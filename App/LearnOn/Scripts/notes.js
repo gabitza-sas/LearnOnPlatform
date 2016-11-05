@@ -9,25 +9,50 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
+var http_1 = require('@angular/http');
 var NotesComponent = (function () {
-    function NotesComponent() {
+    function NotesComponent(_http) {
+        this._http = _http;
     }
     NotesComponent.prototype.ngOnInit = function () {
         $('#myModal').modal('hide');
         this.myPlayer = videojs("vidRTMP");
-        this.timeVideo = 234;
     };
     NotesComponent.prototype.addNote = function () {
         this.myPlayer.pause();
-        var x = this.myPlayer.currentTime();
+        this.myPlayer.currentTime();
+        this.timeVideo = this.myPlayer.currentTime();
+        this.currentTimeFormatted = this.formatTime(this.timeVideo);
         $('#noteModal').modal('show');
     };
+    NotesComponent.prototype.saveNote = function () {
+        //let note: note
+        this._http.post('/odata/Notes/post', "")
+            .subscribe(function (value) {
+            alert(value);
+        });
+    };
+    NotesComponent.prototype.formatTime = function (seconds) {
+        var hours = Math.floor(seconds / 3600);
+        var seconds = seconds - hours * 3600;
+        var minutes = Math.floor(seconds / 60);
+        var seconds = seconds - minutes * 60;
+        var finalTime = this.str_pad_left(hours, '0', 2) + ':' + this.str_pad_left(minutes, '0', 2) + ':' + this.str_pad_left(seconds, '0', 2);
+        return finalTime;
+    };
+    NotesComponent.prototype.str_pad_left = function (string, pad, length) {
+        return (new Array(length + 1).join(pad) + string).slice(-length);
+    };
+    __decorate([
+        core_1.Input(), 
+        __metadata('design:type', String)
+    ], NotesComponent.prototype, "noteComment", void 0);
     NotesComponent = __decorate([
         core_1.Component({
             selector: 'notes',
             templateUrl: '../tsScripts/notes.html'
         }), 
-        __metadata('design:paramtypes', [])
+        __metadata('design:paramtypes', [http_1.Http])
     ], NotesComponent);
     return NotesComponent;
 }());
