@@ -12,6 +12,10 @@ namespace LearnOn.Models
     {
         public int CourseId { get; set; }
 
+        public string CourseName { get; set; }
+
+        public string CourseVideo { get; set; }
+
         public int Id => this.CourseId;
     }
 }

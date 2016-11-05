@@ -12,15 +12,9 @@ export class HomeComponent {
     Courses: Array<LearnOn.Models.Course>;
 
     constructor(private _http: Http) {
-        this.testMethod();
     }
 
-    testMethod() {
-        this._http.get(this.coursesUrl)
-            .subscribe(_ => {
-                alert("a");
-            });
-    }
+
 
     ngOnInit() {
         this._http.get(this.coursesUrl)

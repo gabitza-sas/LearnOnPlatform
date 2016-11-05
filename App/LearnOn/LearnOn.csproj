@@ -248,6 +248,10 @@
     <Compile Include="Migrations\201611050923286_AddedNotes.Designer.cs">
       <DependentUpon>201611050923286_AddedNotes.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201611051216309_addedCourseNameUrl.cs" />
+    <Compile Include="Migrations\201611051216309_addedCourseNameUrl.Designer.cs">
+      <DependentUpon>201611051216309_addedCourseNameUrl.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Course.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -396,6 +400,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201611050923286_AddedNotes.resx">
       <DependentUpon>201611050923286_AddedNotes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201611051216309_addedCourseNameUrl.resx">
+      <DependentUpon>201611051216309_addedCourseNameUrl.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
