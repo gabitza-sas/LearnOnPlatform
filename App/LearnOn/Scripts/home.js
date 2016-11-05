@@ -10,10 +10,11 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var http_1 = require('@angular/http');
+var CourseService_1 = require('./CourseService');
 var HomeComponent = (function () {
-    function HomeComponent(_http, _ngZone) {
+    function HomeComponent(_http, courseService) {
         this._http = _http;
-        this._ngZone = _ngZone;
+        this.courseService = courseService;
         this.coursesUrl = "/odata/Courses";
         this.showView = false;
     }
@@ -25,17 +26,21 @@ var HomeComponent = (function () {
         });
     };
     HomeComponent.prototype.onStartCourseClick = function (course) {
-        var _this = this;
+        CourseService_1.CourseService.getInstance().setSelectedCourse(course);
         this.showView = true;
-        this._ngZone.run(function () { _this.showView = true; });
+    };
+    HomeComponent.prototype.goBack = function () {
+        this.showView = false;
+        videojs("vidRTMP").dispose();
     };
     HomeComponent = __decorate([
         core_1.Component({
             selector: 'home',
+            providers: [CourseService_1.CourseService],
             styles: ["[hidden]:not([broken]) { display: none !important;}"],
             templateUrl: '../tsScripts/home.html'
         }), 
-        __metadata('design:paramtypes', [http_1.Http, core_1.NgZone])
+        __metadata('design:paramtypes', [http_1.Http, CourseService_1.CourseService])
     ], HomeComponent);
     return HomeComponent;
 }());
