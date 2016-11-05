@@ -1,5 +1,6 @@
-﻿<h2>Timo's Notes</h2>
-
+﻿<div class="list-group">
+    <a *ngFor="let note of notes" attr.data-time="{{ note.TimeSeconds }}" class="note list-group-item" (click)="jumpTime()" >{{ formatTime(note.TimeSeconds) }} - {{ note.Text }}</a>
+</div>
 <button (click)="addNote()">Add note</button>
 <div class="modal fade" id="noteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">

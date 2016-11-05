@@ -3,24 +3,45 @@ import { NgModule } from '@angular/core';
 import { Http, Response, HttpModule } from '@angular/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+import Vm = LearnOn.Controllers.Odata;
+import { Headers, RequestOptions } from '@angular/http';
 @Component({
     selector: 'notes',
     templateUrl: '../tsScripts/notes.html'
 })
 export class NotesComponent {
     myPlayer: VideoJSPlayer;
-
+    notes: Vm.NoteViewModel[];
     timeVideo: number;
     currentTimeFormatted: string;
     @Input() noteComment: string;
-    
+
     constructor(private _http: Http) {
 
     }
 
     ngOnInit() {
-        $('#myModal').modal('hide');
         this.myPlayer = videojs("vidRTMP");
+
+        $("#noteModal").on("hidden.bs.modal", () => {
+            this.onModalHide();
+        });
+
+        this.refreshNotesList();
+
+        setInterval(() => this.activeNoteChecker(), 500);
+    }
+
+    refreshNotesList() {
+        this._http.get('/odata/Notes?$orderby=TimeSeconds')
+            .subscribe((response) => {
+                let data = response.text();
+                this.notes = JSON.parse(data).value;
+            });
+    }
+
+    onModalHide() {
+        this.myPlayer.play();
     }
 
     addNote() {
@@ -28,15 +49,39 @@ export class NotesComponent {
         this.myPlayer.currentTime();
         this.timeVideo = this.myPlayer.currentTime();
         this.currentTimeFormatted = this.formatTime(this.timeVideo);
+        this.noteComment = "";
         $('#noteModal').modal('show');
     }
 
     saveNote() {
-        //let note: note
-        this._http.post('/odata/Notes', "")
+        let note: Vm.NoteViewModel = {
+            Id: 0,
+            CourseId: 1,
+            Text: this.noteComment,
+            TimeSeconds: Math.floor(this.timeVideo)
+        };
+        let body: string = JSON.stringify(note); 
+        let headers = new Headers({ 'Content-Type': 'application/json;odata=verbose' });
+        let options = new RequestOptions({ headers: headers });
+
+        this._http.post('/odata/Notes', body, options)
             .subscribe((value) => {
-                alert(value);
+                $('#noteModal').modal('hide');
+                this.refreshNotesList();
             });
+
+    }
+
+    activeNoteChecker() {
+        let currentSeconds: number = this.myPlayer.currentTime();
+        $(".note").each(function () {
+            let seconds: number = parseInt($(this).data("time"), 10);
+            if (currentSeconds < seconds + 5 && currentSeconds > seconds - 5) {
+                $(this).addClass("active");
+            } else {
+                $(this).removeClass("active");
+            }
+        });
     }
 
     formatTime(seconds: number): string {
@@ -48,7 +93,8 @@ export class NotesComponent {
         return finalTime;
     }
 
-    str_pad_left(string: number, pad: string, length: number): string {
-        return (new Array(length + 1).join(pad) + string).slice(-length);
+    str_pad_left(num: number, pad: string, length: number): string {
+        num = Math.floor(num);
+        return (new Array(length + 1).join(pad) + num).slice(-length);
     }
 }
