@@ -383,6 +383,7 @@
     <None Include="Project_Readme.html" />
   </ItemGroup>
   <ItemGroup>
+    <TypeScriptCompile Include="tsScripts\CourseService.ts" />
     <TypeScriptCompile Include="tsScripts\InterfaceJQuery.d.ts" />
     <TypeScriptCompile Include="tsScripts\home.ts" />
     <TypeScriptCompile Include="tsScripts\myVideo.ts" />

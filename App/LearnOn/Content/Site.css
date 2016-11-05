@@ -16,6 +16,10 @@
     white-space: normal;
 }
 
+[hidden] {
+  display: none !important;
+}
+
 .chat-container {
     height: 400px;
     overflow: auto;
