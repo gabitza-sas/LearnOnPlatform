@@ -15,11 +15,6 @@ namespace LearnOn
     {
         protected void Application_Start()
         {
-            using (var db = new LearnOnContext())
-            {
-                db.Database.Initialize(false);
-            }
-
             WebApiConfig.Register(GlobalConfiguration.Configuration);
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
