@@ -13,7 +13,7 @@ var MyVideoComponent = (function () {
     function MyVideoComponent() {
     }
     MyVideoComponent.prototype.ngOnInit = function () {
-        this.myPlayer = videojs("vidRTMP");
+        this.myPlayer = videojs("vidRTMP", {}, function () { });
     };
     MyVideoComponent.prototype.toggleVideo = function () {
         this.myPlayer.pause();

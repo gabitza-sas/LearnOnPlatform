@@ -15,6 +15,8 @@ export class HomeComponent {
 
     showView: boolean = false;
 
+    myPlayer: VideoJSPlayer;
+
     constructor(private _http: Http, private _ngZone: NgZone) {
     }
 
@@ -27,6 +29,10 @@ export class HomeComponent {
 
     onStartCourseClick(course: LearnOn.Models.Course): void {
         this.showView = true;
-        this._ngZone.run(() => { this.showView = true; });
+    }
+
+    goBack() {
+        this.showView = false;
+        videojs("vidRTMP").dispose();
     }
 }

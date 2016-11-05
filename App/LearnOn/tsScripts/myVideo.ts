@@ -3,12 +3,13 @@
     selector: 'my-video',
     templateUrl: '../tsScripts/myVideo.html'
 })
-export class MyVideoComponent {
+export class MyVideoComponent implements OnInit {
 
     myPlayer: VideoJSPlayer;
 
     ngOnInit() {
-        this.myPlayer = videojs("vidRTMP");
+        
+        this.myPlayer = videojs("vidRTMP", {}, function () { });
     }
 
     toggleVideo() {
