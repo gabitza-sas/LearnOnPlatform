@@ -15,7 +15,9 @@ var MyVideoComponent = (function () {
     }
     MyVideoComponent.prototype.ngOnInit = function () {
         var currentCourse = CourseService_1.CourseService.getInstance().getSelectedCourse();
-        this.myPlayer = videojs("vidRTMP", { src: currentCourse.CourseVideo }, function () { });
+        this.myPlayer = videojs("vidRTMP", {}, function () { });
+        var src = { type: 'rtmp/mp4', src: currentCourse.CourseVideo };
+        this.myPlayer.src(src);
     };
     MyVideoComponent.prototype.toggleVideo = function () {
         this.myPlayer.pause();
