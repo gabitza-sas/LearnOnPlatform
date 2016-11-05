@@ -19,6 +19,8 @@ export class HomeComponent {
 
     myPlayer: VideoJSPlayer;
 
+    courseName: string;
+
     constructor(private _http: Http, private courseService: CourseService) {
     }
 
@@ -32,6 +34,7 @@ export class HomeComponent {
     onStartCourseClick(course: LearnOn.Models.Course): void {
         CourseService.getInstance().setSelectedCourse(course);
         this.showView = true;
+        this.courseName = course.CourseName;
     }
 
     goBack() {
