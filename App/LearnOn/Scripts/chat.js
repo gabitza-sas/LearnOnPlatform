@@ -12,9 +12,11 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
+var http_1 = require('@angular/http');
 var ChatComponent = (function () {
-    function ChatComponent() {
+    function ChatComponent(http) {
         var _this = this;
+        this.http = http;
         this.messages = [];
         this.newMessage = "";
         this.courseId = 1;
@@ -29,6 +31,13 @@ var ChatComponent = (function () {
             .then(function () {
             chat.server.joinCourse(_this.courseId);
             chat.server.sendMessage("Test");
+        });
+    };
+    ChatComponent.prototype.getCourses = function () {
+        var _this = this;
+        return this.http.get("/odata/ChatMessages/$filter=CourseId eq " + this.courseId)
+            .subscribe(function (value) {
+            _this.messages = value.json().value;
         });
     };
     ChatComponent.prototype.receiveMessage = function (message) {
@@ -47,8 +56,9 @@ var ChatComponent = (function () {
             selector: 'chat',
             templateUrl: '../tsScripts/chat.html'
         }), 
-        __metadata('design:paramtypes', [])
+        __metadata('design:paramtypes', [http_1.Http])
     ], ChatComponent);
     return ChatComponent;
 }());
 exports.ChatComponent = ChatComponent;
+//# sourceMappingURL=chat.js.map

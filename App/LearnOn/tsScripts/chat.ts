@@ -4,6 +4,7 @@
 
 import { Component, Input } from '@angular/core';
 import { NgModule } from '@angular/core';
+import { Http, Response, HttpModule } from '@angular/http';
 import { BrowserModule } from '@angular/platform-browser';
 import Vm = LearnOn.Controllers.Odata;
 
@@ -16,7 +17,7 @@ export class ChatComponent {
     messages: Vm.ChatMessageViewModel[] = [];
     @Input() newMessage: string = "";
     server: IChatHubServer
-    constructor() {
+    constructor(private http: Http) {
         this.courseId = 1;
         $(() => this.initialize());
     }
@@ -31,6 +32,14 @@ export class ChatComponent {
                 chat.server.sendMessage("Test")
             });
     }
+
+    getCourses() {
+        return this.http.get(`/odata/ChatMessages/$filter=CourseId eq ${this.courseId}`)
+            .subscribe((value) => {
+                this.messages = value.json().value;
+            });
+    }
+
     public receiveMessage(message: Vm.ChatMessageViewModel) {
         this.messages.push(message);
     }
