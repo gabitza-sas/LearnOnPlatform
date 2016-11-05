@@ -233,7 +233,6 @@
     <Compile Include="Controllers\Odata\CoursesController.cs" />
     <Compile Include="Controllers\Odata\ManageCoursesController.cs" />
     <Compile Include="Controllers\Odata\NotesController.cs" />
-    <Compile Include="Controllers\ValuesApiController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -263,6 +262,7 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\images\learnon_logo_small.png" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -304,6 +304,7 @@
       <LastGenOutput>TypeLite.Net4.d.ts</LastGenOutput>
     </Content>
     <Content Include="Scripts\_references.js" />
+    <Content Include="tsScripts\home.html" />
     <Content Include="tsScripts\myVideo.html" />
     <Content Include="tsScripts\chat.html" />
     <Content Include="tsScripts\notes.html" />
@@ -362,6 +363,7 @@
     <None Include="Project_Readme.html" />
   </ItemGroup>
   <ItemGroup>
+    <TypeScriptCompile Include="tsScripts\home.ts" />
     <TypeScriptCompile Include="tsScripts\myVideo.ts" />
     <TypeScriptCompile Include="tsScripts\chat.ts" />
     <TypeScriptCompile Include="tsScripts\notes.ts" />
