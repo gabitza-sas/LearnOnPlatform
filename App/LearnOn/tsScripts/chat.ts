@@ -1,5 +1,5 @@
-﻿/// <reference path="../typings/globals/jquery/index.d.ts" />
-/// <reference path="../typings/globals/signalr/index.d.ts" />
+﻿/// <reference path="..\typings\globals\jquery\index.d.ts" />
+/// <reference path="..\typings\globals\signalr\index.d.ts" />
 /// <reference path="signalr.server.d.ts" />
 
 import { Component } from '@angular/core';
