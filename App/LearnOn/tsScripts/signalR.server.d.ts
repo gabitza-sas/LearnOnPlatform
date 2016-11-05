@@ -8,7 +8,8 @@ interface IChatHub extends SignalR.Hub.Proxy {
 }
 
 interface IChatHubServer {
-    sendMessage(messsage: string);
+    sendMessage(messsage: string): JQueryPromise<void>;
+    joinCourse(courseId: number): JQueryPromise<void>;
 }
 
 interface IChatHubClient {

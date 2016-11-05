@@ -15,6 +15,7 @@ namespace LearnOn
     {
         protected void Application_Start()
         {
+            AutoMapperConfig.Configure();
             WebApiConfig.Register(GlobalConfiguration.Configuration);
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
