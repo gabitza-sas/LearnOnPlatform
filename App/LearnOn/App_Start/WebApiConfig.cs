@@ -20,7 +20,7 @@ namespace LearnOn.App_Start
             ODataModelBuilder builder = new ODataConventionModelBuilder();
             builder.EntitySet<Course>("Courses");
             builder.EntitySet<ChatMessageViewModel>("ChatMessages");
-            builder.EntitySet<Note>("Notes");
+            builder.EntitySet<NoteViewModel>("Notes");
 
             config.MapODataServiceRoute(
                 routeName: "ODataRoute",
