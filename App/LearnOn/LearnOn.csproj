@@ -250,6 +250,18 @@
     <Compile Include="Migrations\201611050923286_AddedNotes.Designer.cs">
       <DependentUpon>201611050923286_AddedNotes.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201611051337593_changedNote.cs" />
+    <Compile Include="Migrations\201611051337593_changedNote.Designer.cs">
+      <DependentUpon>201611051337593_changedNote.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201611051216309_addedCourseNameUrl.cs" />
+    <Compile Include="Migrations\201611051216309_addedCourseNameUrl.Designer.cs">
+      <DependentUpon>201611051216309_addedCourseNameUrl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201611051346107_addedCourseNameUrl2.cs" />
+    <Compile Include="Migrations\201611051346107_addedCourseNameUrl2.Designer.cs">
+      <DependentUpon>201611051346107_addedCourseNameUrl2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\201611051349192_Chat.cs" />
     <Compile Include="Migrations\201611051349192_Chat.Designer.cs">
       <DependentUpon>201611051349192_Chat.cs</DependentUpon>
@@ -270,6 +282,7 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\images\learnon_logo_small.png" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -311,6 +324,7 @@
       <LastGenOutput>TypeLite.Net4.d.ts</LastGenOutput>
     </Content>
     <Content Include="Scripts\_references.js" />
+    <Content Include="tsScripts\home.html" />
     <Content Include="tsScripts\myVideo.html" />
     <Content Include="tsScripts\chat.html" />
     <Content Include="tsScripts\notes.html" />
@@ -369,6 +383,8 @@
     <None Include="Project_Readme.html" />
   </ItemGroup>
   <ItemGroup>
+    <TypeScriptCompile Include="tsScripts\InterfaceJQuery.d.ts" />
+    <TypeScriptCompile Include="tsScripts\home.ts" />
     <TypeScriptCompile Include="tsScripts\myVideo.ts" />
     <TypeScriptCompile Include="tsScripts\chat.ts" />
     <TypeScriptCompile Include="tsScripts\notes.ts" />
@@ -400,6 +416,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201611050923286_AddedNotes.resx">
       <DependentUpon>201611050923286_AddedNotes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201611051337593_changedNote.resx">
+      <DependentUpon>201611051337593_changedNote.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201611051216309_addedCourseNameUrl.resx">
+      <DependentUpon>201611051216309_addedCourseNameUrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201611051346107_addedCourseNameUrl2.resx">
+      <DependentUpon>201611051346107_addedCourseNameUrl2.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201611051349192_Chat.resx">
       <DependentUpon>201611051349192_Chat.cs</DependentUpon>

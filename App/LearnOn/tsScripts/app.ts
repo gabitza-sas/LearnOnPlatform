@@ -4,5 +4,10 @@
     templateUrl: '../tsScripts/app.html'
 })
 export class AppComponent {
+    showVideo: boolean = true;
+
+    Error() {
+        alert("");
+    }
 
 }

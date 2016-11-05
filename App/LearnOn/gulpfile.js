@@ -1,4 +1,4 @@
-﻿/// <binding />
+/// <binding />
 var ts = require('gulp-typescript');
 var gulp = require('gulp');
 var clean = require('gulp-clean');

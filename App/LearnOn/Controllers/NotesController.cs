@@ -31,7 +31,7 @@ namespace LearnOn.Controllers
                     ApplicationUsers = user,
                     Course = course,
                     Text = "blabla mama are mere",
-                    Time = DateTime.Now
+                    TimeSeconds = 2
                 };
 
 
