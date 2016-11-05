@@ -1,0 +1,7 @@
+﻿<h2>Search notes</h2>
+<div class="form-group">
+    <input type="text" class="form-control" id="noteComment" >
+</div>
+<div class="list-group">
+    <a *ngFor="let note of notes" attr.data-time="{{ note.TimeSeconds }}" class="list-group-item" (click)="jumpToCourseAtTime(note.CourseId, note.TimeSeconds)">{{ note.CourseName }}: {{ formatTime(note.TimeSeconds) }} - {{ note.Text }}</a>
+</div>
