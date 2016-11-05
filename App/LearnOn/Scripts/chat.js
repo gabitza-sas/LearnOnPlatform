@@ -12,13 +12,18 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
+var moment = require('moment');
 var http_1 = require('@angular/http');
 var ChatComponent = (function () {
     function ChatComponent(http) {
         var _this = this;
         this.http = http;
+        this.takeCount = 5;
         this.messages = [];
         this.newMessage = "";
+        this.refTime = new Date();
+        this.totalMessageCount = 0;
+        this.isLoading = false;
         this.courseId = 1;
         $(function () { return _this.initialize(); });
     }
@@ -30,22 +35,48 @@ var ChatComponent = (function () {
         $.connection.hub.start()
             .then(function () {
             chat.server.joinCourse(_this.courseId);
-            chat.server.sendMessage("Test");
         });
-    };
-    ChatComponent.prototype.getCourses = function () {
-        var _this = this;
-        return this.http.get("/odata/ChatMessages/$filter=CourseId eq " + this.courseId)
+        this.getCourses(0)
             .subscribe(function (value) {
-            _this.messages = value.json().value;
+            _this.updateTime();
+            var json = value.json();
+            _this.messages = json.value;
+            _this.totalMessageCount = json['@odata.count'];
         });
+        setInterval(function () { return _this.updateTime(); }, 5000);
+    };
+    ChatComponent.prototype.updateTime = function () {
+        this.refTime = new Date();
+    };
+    ChatComponent.prototype.getCourses = function (skip) {
+        return this.http.get("/odata/ChatMessages?$filter=CourseId eq " + this.courseId + "&$orderby=Time desc&$top=" + this.takeCount + "&$skip=" + skip + "&$count=true");
     };
     ChatComponent.prototype.receiveMessage = function (message) {
-        this.messages.push(message);
+        this.messages.splice(0, 0, message);
     };
     ChatComponent.prototype.sendMessage = function () {
         this.server.sendMessage(this.newMessage);
+        this.cancelMessage();
+    };
+    ChatComponent.prototype.cancelMessage = function () {
         this.newMessage = "";
+    };
+    ChatComponent.prototype.showMore = function () {
+        var _this = this;
+        if (!this.isLoading) {
+            this.isLoading = true;
+            this.getCourses(this.messages.length)
+                .subscribe(function (value) {
+                var json = value.json();
+                _this.totalMessageCount = json['@odata.count'];
+                (_a = _this.messages).push.apply(_a, json.value);
+                _this.isLoading = false;
+                var _a;
+            });
+        }
+    };
+    ChatComponent.prototype.convert = function (time) {
+        return moment(time).from(this.refTime);
     };
     __decorate([
         core_1.Input(), 

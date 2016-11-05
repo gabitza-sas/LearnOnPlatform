@@ -1,14 +1,26 @@
 ﻿<div>
-    <div >
-    <textarea cols="20" rows="4" [(ngModel)]="newMessage" class="col-lg-12"></textarea>
+    <div>
+        <textarea cols="20" rows="4" [(ngModel)]="newMessage" placeholder="Add a comment"
+                  class="col-lg-12 spacing" ></textarea>
     </div>
     <div >
-        <button (click)="sendMessage()" class="btn btn-primary">Cancel</button>
-        <button (click)="sendMessage()" class="btn btn-primary">Send</button>
+        <button (click)="cancelMessage()" class="btn btn-primary spacing">Cancel</button>
+        <button (click)="sendMessage()"  class="btn btn-primary spacing">Send</button>
     </div>
 </div>
-<ul>
-    <li *ngFor="let m of messages">
-        {{ m.UserName }} : {{ m. Text }}
-    </li>
-</ul>
+<div class="text-muted">
+    Comments • {{totalMessageCount}}
+</div>
+<div ng-controller="ChatComponent as parent">
+    <div *ngFor="let m of messages">
+        <div class="table-bordered spacing">
+            <div class="text-muted small">
+                {{ m.UserName }} {{ convert(m.Time) }}
+            </div>
+            <div>
+                {{ m. Text }}
+            </div>
+        </div>
+    </div>
+</div>
+<button (click)="showMore()" disabled="{{ (!isLoading) }}" class="btn btn-primary col-lg-12">Show More</button>

@@ -4,6 +4,7 @@
 
 import { Component, Input } from '@angular/core';
 import { NgModule } from '@angular/core';
+import * as moment from 'moment';
 import { Http, Response, HttpModule } from '@angular/http';
 import { BrowserModule } from '@angular/platform-browser';
 import Vm = LearnOn.Controllers.Odata;
@@ -14,9 +15,12 @@ import Vm = LearnOn.Controllers.Odata;
 })
 export class ChatComponent {
     courseId: number;
+    takeCount = 5;
     messages: Vm.ChatMessageViewModel[] = [];
     @Input() newMessage: string = "";
     server: IChatHubServer
+    refTime = new Date();
+    totalMessageCount = 0;
     constructor(private http: Http) {
         this.courseId = 1;
         $(() => this.initialize());
@@ -29,23 +33,55 @@ export class ChatComponent {
             .then(() =>
             {
                 chat.server.joinCourse(this.courseId);
-                chat.server.sendMessage("Test")
             });
+        this.getCourses(0)
+            .subscribe((value) => {
+                this.updateTime();
+                var json = value.json();
+                this.messages = json.value;
+                this.totalMessageCount = json['@odata.count'];
+            });
+        setInterval(() => this.updateTime(), 5000);
+    }
+    updateTime() {
+        this.refTime = new Date();
     }
 
-    getCourses() {
-        return this.http.get(`/odata/ChatMessages/$filter=CourseId eq ${this.courseId}`)
-            .subscribe((value) => {
-                this.messages = value.json().value;
-            });
+    getCourses(skip: number) {
+        return this.http.get(`/odata/ChatMessages?$filter=CourseId eq ${this.courseId}&$orderby=Time desc&$top=${this.takeCount}&$skip=${skip}&$count=true`)
     }
 
     public receiveMessage(message: Vm.ChatMessageViewModel) {
-        this.messages.push(message);
+        this.messages.splice(0, 0, message);
     }
 
     public sendMessage() {
         this.server.sendMessage(this.newMessage);
+        this.cancelMessage();
+    }
+    public cancelMessage() {
         this.newMessage = "";
+    }
+
+
+    isLoading = false;
+
+    public showMore() {
+        if (!this.isLoading) {
+            this.isLoading = true;
+            this.getCourses(this.messages.length)
+                .subscribe((value) => {
+                    var json = value.json();
+                    
+                    this.totalMessageCount = json['@odata.count'];
+                    this.messages.push(...json.value);
+
+                    this.isLoading = false;
+                });
+        }
+    }
+
+    public convert(time: Date) {
+        return moment(time).from(this.refTime);
     }
 }
