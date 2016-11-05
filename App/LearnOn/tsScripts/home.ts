@@ -1,9 +1,11 @@
-﻿import { Component, OnInit, NgZone } from '@angular/core';
+﻿import { Component, OnInit } from '@angular/core';
 import { Http } from '@angular/http';
-import { NgIf } from '@angular/common'
+import { NgIf } from '@angular/common';
+import { CourseService } from './CourseService';
 
 @Component({
     selector: 'home',
+    providers: [CourseService],
     styles: [`[hidden]:not([broken]) { display: none !important;}`],
     templateUrl: '../tsScripts/home.html'
 })
@@ -17,7 +19,7 @@ export class HomeComponent {
 
     myPlayer: VideoJSPlayer;
 
-    constructor(private _http: Http, private _ngZone: NgZone) {
+    constructor(private _http: Http, private courseService: CourseService) {
     }
 
     ngOnInit() {
@@ -28,6 +30,7 @@ export class HomeComponent {
     }
 
     onStartCourseClick(course: LearnOn.Models.Course): void {
+        CourseService.getInstance().setSelectedCourse(course);
         this.showView = true;
     }
 
