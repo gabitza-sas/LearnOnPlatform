@@ -19,6 +19,7 @@ gulp.task("scriptsNStyles", function () {
             'rxjs/**',
             'zone.js/dist/**',
             '@angular/**',
+            'moment/**',
             'jquery/dist/jquery.*js',
             'bootstrap/dist/js/bootstrap.*js'
     ], {

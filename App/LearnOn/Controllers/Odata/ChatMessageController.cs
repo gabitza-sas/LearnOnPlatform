@@ -10,7 +10,7 @@ using TypeLite;
 
 namespace LearnOn.Controllers.Odata
 {
-    public class ChatMessageController : BaseODataController<ChatMessage, ChatMessageViewModel>
+    public class ChatMessagesController : BaseODataController<ChatMessage, ChatMessageViewModel>
     {
         protected override DbSet<ChatMessage> Entities => this.Db.ChatMessages;
 
@@ -25,7 +25,7 @@ namespace LearnOn.Controllers.Odata
     {
         public int Id { get; set; }
         public string CourseName { get; set; }
-        public string CourseId { get; set; }
+        public int CourseId { get; set; }
         public string UserName { get; set; }
         public string Text { get; set; }
         public DateTime Time { get; set; }

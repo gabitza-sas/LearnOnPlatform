@@ -9,11 +9,13 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
+var CourseService_1 = require('./CourseService');
 var MyVideoComponent = (function () {
     function MyVideoComponent() {
     }
     MyVideoComponent.prototype.ngOnInit = function () {
-        this.myPlayer = videojs("vidRTMP");
+        var currentCourse = CourseService_1.CourseService.getInstance().getSelectedCourse();
+        this.myPlayer = videojs("vidRTMP", { src: currentCourse.CourseVideo }, function () { });
     };
     MyVideoComponent.prototype.toggleVideo = function () {
         this.myPlayer.pause();
@@ -21,6 +23,7 @@ var MyVideoComponent = (function () {
     MyVideoComponent = __decorate([
         core_1.Component({
             selector: 'my-video',
+            providers: [CourseService_1.CourseService],
             templateUrl: '../tsScripts/myVideo.html'
         }), 
         __metadata('design:paramtypes', [])
@@ -28,4 +31,3 @@ var MyVideoComponent = (function () {
     return MyVideoComponent;
 }());
 exports.MyVideoComponent = MyVideoComponent;
-//# sourceMappingURL=myVideo.js.map
