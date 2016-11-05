@@ -7,9 +7,10 @@ import { ChatComponent } from './chat';
 import { MyVideoComponent } from './myVideo';
 import { NotesComponent } from './notes';
 import { HomeComponent } from './home';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
-    imports: [BrowserModule, HttpModule],
+    imports: [BrowserModule, HttpModule, FormsModule],
     declarations: [AppComponent, ChatComponent, MyVideoComponent, NotesComponent, HomeComponent],
     bootstrap: [AppComponent]
 })

@@ -18,6 +18,8 @@ namespace LearnOn.Models
 
         public DbSet<Note> Notes { get; set; }
 
+        public DbSet<ChatMessage> ChatMessages { get; set; }
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             Database.SetInitializer<LearnOnContext>(null);

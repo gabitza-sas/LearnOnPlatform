@@ -1,4 +1,5 @@
-﻿using LearnOn.Models;
+﻿using LearnOn.Controllers.Odata;
+using LearnOn.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,7 +19,9 @@ namespace LearnOn.App_Start
 
             ODataModelBuilder builder = new ODataConventionModelBuilder();
             builder.EntitySet<Course>("Courses");
+            builder.EntitySet<ChatMessageViewModel>("ChatMessage");
             builder.EntitySet<Note>("Notes");
+
             config.MapODataServiceRoute(
                 routeName: "ODataRoute",
                 routePrefix: "odata",

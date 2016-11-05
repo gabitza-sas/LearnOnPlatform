@@ -10,9 +10,8 @@ namespace LearnOn.Models
     [TsClass]
     public class Course: IODataEntity
     {
-        public int CourseId { get; set; }
-
         public string CourseName { get; set; }
+        public int CourseId { get; set; }
 
         public string CourseVideo { get; set; }
 

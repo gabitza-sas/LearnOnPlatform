@@ -32,7 +32,7 @@ var ManageCoursesComponent = (function () {
     ManageCoursesComponent = __decorate([
         core_1.Component({
             selector: 'manage-courses',
-            template: "    \n    <h2>My favorite skill is: {{myskills}}</h2>\n    <p>Skill:</p>\n    <ul>\n      <li *ngFor=\"let c of courses\">\n        {{ c.CourseId }}\n      </li>\n    </ul>\n  "
+            template: "\n    <h2>My favorite skill is: {{myskills}}</h2>\n    <p>Skill:</p>\n    <ul>\n      <li *ngFor=\"let c of courses\">\n        {{ c.CourseId }}\n      </li>\n    </ul>\n  "
         }), 
         __metadata('design:paramtypes', [http_1.Http])
     ], ManageCoursesComponent);
@@ -55,3 +55,4 @@ var ManageCoursesModule = (function () {
 exports.ManageCoursesModule = ManageCoursesModule;
 var platform = platform_browser_dynamic_1.platformBrowserDynamic();
 platform.bootstrapModule(ManageCoursesModule);
+//# sourceMappingURL=manageCoursesApp.js.map
