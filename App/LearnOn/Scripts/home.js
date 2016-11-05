@@ -28,6 +28,7 @@ var HomeComponent = (function () {
     HomeComponent.prototype.onStartCourseClick = function (course) {
         CourseService_1.CourseService.getInstance().setSelectedCourse(course);
         this.showView = true;
+        this.courseName = course.CourseName;
     };
     HomeComponent.prototype.goBack = function () {
         this.showView = false;
@@ -45,4 +46,3 @@ var HomeComponent = (function () {
     return HomeComponent;
 }());
 exports.HomeComponent = HomeComponent;
-//# sourceMappingURL=home.js.map
