@@ -1,12 +1,17 @@
-﻿using System;
+﻿using LearnOn.Controllers.Odata;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using TypeLite;
 
 namespace LearnOn.Models
 {
-    public class Course
+    [TsClass]
+    public class Course: IODataEntity
     {
         public int CourseId { get; set; }
+
+        public int Id => this.CourseId;
     }
 }

@@ -15,12 +15,6 @@
 
     <!-- 2. Configure SystemJS -->
     <script src="~/Scripts/systemjs.config.js"></script>
-    <script>
-        System.import('../Scripts/main').catch(function (err)
-        {
-            console.error(err);
-        });
-    </script>
 
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
@@ -41,6 +35,7 @@
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
                     <li>@Html.ActionLink("About", "About", "Home")</li>
                     <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    @Html.Partial("_LoginPartial")
                 </ul>
             </div>
         </div>
@@ -52,7 +47,6 @@
             <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
         </footer>
     </div>
-
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
