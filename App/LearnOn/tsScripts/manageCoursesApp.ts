@@ -16,25 +16,24 @@ import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
     <h2>My favorite skill is: {{myskills}}</h2>
     <p>Skill:</p>
     <ul>
-      <li *ngFor="let skl of skills">
-        {{ skl }}
+      <li *ngFor="let c of courses">
+        {{ c.CourseId }}
       </li>
     </ul>
   `
 })
 export class ManageCoursesComponent {
     title = 'ASP.NET MVC 5 with Angular 2';
-    skills = ['MVC 5', 'Angular 2', 'TypeScript', 'Visual Studio 2015'];
-    myskills = this.skills[1];
+    courses :LearnOn.Models.Course[] = []
     
-    constructor(private _http: Http){
-        this.getOneNoty(1);
+    constructor(private _http: Http) {
+        this.getCourses()
     }
 
-    getOneNoty(id: number) {
+    getCourses() {
         return this._http.get('/odata/Courses')
             .subscribe((value) => {
-                alert('a');
+                this.courses = value.json().value;
             });
     }
 
