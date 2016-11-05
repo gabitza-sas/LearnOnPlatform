@@ -1,6 +1,12 @@
-﻿<h2>Titian's Chatting</h2>
-<textarea cols="30" rows="4" [(ngModel)]="newMessage"></textarea>
-<button (click)="sendMessage()">Send</button>
+﻿<div>
+    <div >
+    <textarea cols="20" rows="4" [(ngModel)]="newMessage" class="col-lg-12"></textarea>
+    </div>
+    <div >
+        <button (click)="sendMessage()" class="btn btn-primary">Cancel</button>
+        <button (click)="sendMessage()" class="btn btn-primary">Send</button>
+    </div>
+</div>
 <ul>
     <li *ngFor="let m of messages">
         {{ m.UserName }} : {{ m. Text }}

@@ -28,3 +28,4 @@ var MyVideoComponent = (function () {
     return MyVideoComponent;
 }());
 exports.MyVideoComponent = MyVideoComponent;
+//# sourceMappingURL=myVideo.js.map
