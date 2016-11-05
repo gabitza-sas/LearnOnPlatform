@@ -16,6 +16,8 @@ namespace LearnOn.Models
         public DbSet<Course> Courses { get; set; }
         public DbSet<ApplicationUser> Users { get; set; }
 
+        public DbSet<Note> Notes { get; set; }
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Entity<IdentityUserLogin>().HasKey<string>(l => l.UserId);

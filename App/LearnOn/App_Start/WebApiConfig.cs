@@ -18,10 +18,12 @@ namespace LearnOn.App_Start
 
             ODataModelBuilder builder = new ODataConventionModelBuilder();
             builder.EntitySet<Course>("Courses");
+            builder.EntitySet<Note>("Notes");
             config.MapODataServiceRoute(
                 routeName: "ODataRoute",
                 routePrefix: "odata",
                 model: builder.GetEdmModel());
+          config.Count().Filter().OrderBy().Expand().Select().MaxTop(null);
         }
 
 
