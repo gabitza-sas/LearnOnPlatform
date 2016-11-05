@@ -1,8 +1,10 @@
-﻿import { Component, OnInit } from '@angular/core';
+﻿import { Component, OnInit, NgZone } from '@angular/core';
 import { Http } from '@angular/http';
+import { NgIf } from '@angular/common'
 
 @Component({
     selector: 'home',
+    styles: [`[hidden]:not([broken]) { display: none !important;}`],
     templateUrl: '../tsScripts/home.html'
 })
 export class HomeComponent {
@@ -11,15 +13,20 @@ export class HomeComponent {
 
     Courses: Array<LearnOn.Models.Course>;
 
-    constructor(private _http: Http) {
+    showView: boolean = false;
+
+    constructor(private _http: Http, private _ngZone: NgZone) {
     }
-
-
 
     ngOnInit() {
         this._http.get(this.coursesUrl)
             .subscribe(_ => {
-                alert("a");
+                this.Courses = _.json().value;
             });
+    }
+
+    onStartCourseClick(course: LearnOn.Models.Course): void {
+        this.showView = true;
+        this._ngZone.run(() => { this.showView = true; });
     }
 }
