@@ -19,3 +19,9 @@
 [hidden] {
   display: none !important;
 }
+
+.chat-container {
+    height: 400px;
+    overflow: auto;
+}
+.spacing { margin: 2px; }
