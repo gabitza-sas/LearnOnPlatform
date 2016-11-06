@@ -229,7 +229,6 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
-    <Compile Include="Controllers\NotesController.cs" />
     <Compile Include="Controllers\Odata\BaseODataController.cs" />
     <Compile Include="Controllers\Odata\ChatMessageController.cs" />
     <Compile Include="Controllers\Odata\CoursesController.cs" />
@@ -319,6 +318,7 @@
     <Content Include="Scripts\respond.matchmedia.addListener.min.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\systemjs.config.js" />
+    <Content Include="tsScripts\searchNotes.html" />
     <Content Include="tsScripts\TypeLite.Net4.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>TypeLite.Net4.d.ts</LastGenOutput>
@@ -388,6 +388,7 @@
     <TypeScriptCompile Include="tsScripts\home.ts" />
     <TypeScriptCompile Include="tsScripts\myVideo.ts" />
     <TypeScriptCompile Include="tsScripts\chat.ts" />
+    <TypeScriptCompile Include="tsScripts\searchNotes.ts" />
     <TypeScriptCompile Include="tsScripts\notes.ts" />
     <TypeScriptCompile Include="tsScripts\Enums.ts">
       <DependentUpon>TypeLite.Net4.tt</DependentUpon>

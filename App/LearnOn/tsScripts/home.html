@@ -13,20 +13,29 @@
 
         </div>
         <div class="col-md-6">
-            <h2> Upcoming Events</h2>
+            <searchNotes></searchNotes>
         </div>
     </div>
 </div>
 
 <div *ngIf="showView">
     <div class="row">
-        <button (click)="goBack()">Back</button>
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <div class="col-md-2">
+                    <button (click)="goBack()" class="btn btn-info">Back</button>
+                </div>
+                <div class="col-md-10">
+                    <h3 class="text-danger" >{{courseName}}</h3>
+                </div>
+            </div>
+        </div>
     </div>
     <div class="row">
-        <div class="col-md-9">
+        <div class="col-md-8">
             <my-video></my-video>
         </div>
-        <div class="col-md-3">
+        <div class="col-md-4">
             <notes></notes>
         </div>
     </div>

@@ -8,41 +8,44 @@ using System.Web.Mvc;
 using System.Web.OData;
 using System.Data.Entity;
 using System.Web.Http;
+using TypeLite;
 
 namespace LearnOn.Controllers.Odata
 {
-    public class NotesController : BaseODataController<Note>
+    public class NotesController : BaseODataController<Note, NoteViewModel>
     {
-        /*
-        protected override DbSet<Note> Entities
-        {
-            get
-            {
-                throw new NotImplementedException();
-            }
-        }
+        protected override DbSet<Note> Entities => Db.Notes;
 
-        [EnableQuery]
-        public IQueryable<Note> Get()
-        {
-            return this.Db.Notes;
-        }
-
-        public override SingleResult<Note> Get([FromODataUri] int key)
-        {
-            throw new NotImplementedException();
-        }*/
-        protected override DbSet<Note> Entities
-        {
-            get
-            {
-                throw new NotImplementedException();
-            }
-        }
-
-        public override SingleResult<Note> Get([FromODataUri] int key)
+        public override SingleResult<NoteViewModel> Get([FromODataUri] int key)
         {
             throw new NotImplementedException();
         }
+
+        protected override Note MapToEntity(NoteViewModel viewModel)
+        {
+            var user = Db.Users.Where(e => e.UserName == User.Identity.Name).FirstOrDefault();
+
+            var course = Db.Courses.Where(e => e.CourseId == viewModel.CourseId).FirstOrDefault();
+
+            var note = new Note()
+            {
+                ApplicationUsers = user,
+                Course = course,
+                Text = viewModel.Text,
+                TimeSeconds = viewModel.TimeSeconds
+            };
+            return note;
+        }
+    }
+
+    [TsClass]
+    public class NoteViewModel
+    {
+        public int Id { get; set; }
+        public int CourseId { get; set; }
+
+        public string CourseName { get; set; }
+        public string Text { get; set; }
+        public int TimeSeconds { get; set; }
     }
 }

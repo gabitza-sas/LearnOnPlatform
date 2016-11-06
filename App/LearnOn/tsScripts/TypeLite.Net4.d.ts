@@ -9,11 +9,19 @@
 
 declare module LearnOn.Controllers.Odata {
 	interface ChatMessageViewModel {
+		CourseId: number;
 		CourseName: string;
 		Id: number;
 		Text: string;
 		Time: Date;
 		UserName: string;
+	}
+	interface NoteViewModel {
+		CourseId: number;
+		CourseName: string;
+		Id: number;
+		Text: string;
+		TimeSeconds: number;
 	}
 }
 declare module LearnOn.Models {
