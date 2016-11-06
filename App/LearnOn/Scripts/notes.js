@@ -36,6 +36,7 @@ var NotesComponent = (function () {
     };
     NotesComponent.prototype.jumpTime = function (timeSeconds) {
         this.myPlayer.currentTime(timeSeconds);
+        this.activeNoteChecker();
     };
     NotesComponent.prototype.onModalHide = function () {
         this.myPlayer.play();

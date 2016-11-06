@@ -43,6 +43,7 @@ export class NotesComponent {
 
     jumpTime(timeSeconds: number) {
         this.myPlayer.currentTime(timeSeconds);
+        this.activeNoteChecker();
     }
 
     onModalHide() {
