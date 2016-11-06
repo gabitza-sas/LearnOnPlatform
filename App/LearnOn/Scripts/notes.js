@@ -11,6 +11,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var http_1 = require('@angular/http');
 var http_2 = require('@angular/http');
+var CourseService_1 = require('./CourseService');
 var NotesComponent = (function () {
     function NotesComponent(_http) {
         this._http = _http;
@@ -18,19 +19,23 @@ var NotesComponent = (function () {
     NotesComponent.prototype.ngOnInit = function () {
         var _this = this;
         this.myPlayer = videojs("vidRTMP");
+        this.courseId = CourseService_1.CourseService.instance.getSelectedCourse().CourseId;
         $("#noteModal").on("hidden.bs.modal", function () {
             _this.onModalHide();
         });
         this.refreshNotesList();
-        setInterval(function () { return _this.activeNoteChecker(); }, 500);
+        clearInterval(CourseService_1.CourseService.courseInterval);
+        CourseService_1.CourseService.courseInterval = setInterval(function () { return _this.activeNoteChecker(); }, 1500);
     };
     NotesComponent.prototype.refreshNotesList = function () {
         var _this = this;
-        this._http.get('/odata/Notes?$orderby=TimeSeconds')
+        this._http.get('/odata/Notes?$orderby=TimeSeconds&$filter=CourseId eq ' + this.courseId)
             .subscribe(function (response) {
-            var data = response.text();
-            _this.notes = JSON.parse(data).value;
+            _this.notes = response.json().value;
         });
+    };
+    NotesComponent.prototype.jumpTime = function (timeSeconds) {
+        this.myPlayer.currentTime(timeSeconds);
     };
     NotesComponent.prototype.onModalHide = function () {
         this.myPlayer.play();
@@ -47,7 +52,8 @@ var NotesComponent = (function () {
         var _this = this;
         var note = {
             Id: 0,
-            CourseId: 1,
+            CourseName: "",
+            CourseId: this.courseId,
             Text: this.noteComment,
             TimeSeconds: Math.floor(this.timeVideo)
         };

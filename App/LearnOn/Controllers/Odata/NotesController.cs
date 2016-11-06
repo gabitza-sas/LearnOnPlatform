@@ -43,6 +43,8 @@ namespace LearnOn.Controllers.Odata
     {
         public int Id { get; set; }
         public int CourseId { get; set; }
+
+        public string CourseName { get; set; }
         public string Text { get; set; }
         public int TimeSeconds { get; set; }
     }

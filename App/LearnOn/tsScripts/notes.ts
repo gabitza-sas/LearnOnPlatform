@@ -5,6 +5,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import Vm = LearnOn.Controllers.Odata;
 import { Headers, RequestOptions } from '@angular/http';
+import { CourseService } from './CourseService';
 @Component({
     selector: 'notes',
     templateUrl: '../tsScripts/notes.html'
@@ -15,29 +16,33 @@ export class NotesComponent {
     timeVideo: number;
     currentTimeFormatted: string;
     @Input() noteComment: string;
-
+    courseId: number;
+    interval: number;
     constructor(private _http: Http) {
 
     }
 
     ngOnInit() {
         this.myPlayer = videojs("vidRTMP");
-
+        this.courseId = CourseService.instance.getSelectedCourse().CourseId;
         $("#noteModal").on("hidden.bs.modal", () => {
             this.onModalHide();
         });
 
         this.refreshNotesList();
-
-        setInterval(() => this.activeNoteChecker(), 500);
+        clearInterval(CourseService.courseInterval);
+        CourseService.courseInterval = setInterval(() => this.activeNoteChecker(), 1500);
+    }
+    
+    refreshNotesList() {
+        this._http.get('/odata/Notes?$orderby=TimeSeconds&$filter=CourseId eq ' + this.courseId)
+            .subscribe((response) => {
+                this.notes = response.json().value;
+            });
     }
 
-    refreshNotesList() {
-        this._http.get('/odata/Notes?$orderby=TimeSeconds')
-            .subscribe((response) => {
-                let data = response.text();
-                this.notes = JSON.parse(data).value;
-            });
+    jumpTime(timeSeconds: number) {
+        this.myPlayer.currentTime(timeSeconds);
     }
 
     onModalHide() {
@@ -56,7 +61,8 @@ export class NotesComponent {
     saveNote() {
         let note: Vm.NoteViewModel = {
             Id: 0,
-            CourseId: 1,
+            CourseName: "",
+            CourseId: this.courseId,
             Text: this.noteComment,
             TimeSeconds: Math.floor(this.timeVideo)
         };

@@ -20,7 +20,8 @@ namespace LearnOn.App_Start
                     .ForMember(_ => _.CourseId, cc => cc.MapFrom(_ => _.Course.CourseId));
 
                 c.CreateMap<Note, NoteViewModel>()
-                    .ForMember(_ => _.CourseId, cc => cc.MapFrom(_ => _.Course.CourseId));
+                    .ForMember(_ => _.CourseId, cc => cc.MapFrom(_ => _.Course.CourseId))
+                    .ForMember(_ => _.CourseName, cc => cc.MapFrom(_ => _.Course.CourseName));
             });
         }
     }
