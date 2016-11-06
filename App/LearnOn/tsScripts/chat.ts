@@ -31,10 +31,7 @@ export class ChatComponent {
         chat.client.receiveMessage = this.receiveMessage.bind(this);
         this.server = chat.server;
         $.connection.hub.start()
-            .then(() =>
-            {
-                chat.server.joinCourse(this.courseId);
-            });
+            .then(() => chat.server.joinCourse(this.courseId));
         this.getCourses(0)
             .subscribe((value) => {
                 this.updateTime();
@@ -63,10 +60,7 @@ export class ChatComponent {
     public cancelMessage() {
         this.newMessage = "";
     }
-
-
     isLoading = false;
-
     public showMore() {
         if (!this.isLoading) {
             this.isLoading = true;

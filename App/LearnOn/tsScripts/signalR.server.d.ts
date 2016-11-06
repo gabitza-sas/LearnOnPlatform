@@ -15,3 +15,8 @@ interface IChatHubServer {
 interface IChatHubClient {
     receiveMessage(message: string): IChatHubClient;
 }
+
+
+interface Window {
+    loginUserName: string;
+}

@@ -15,10 +15,11 @@ namespace LearnOn.SignalR
     public class ChatHub : Hub
     {
         static ConcurrentDictionary<string, string> groups = new ConcurrentDictionary<string, string>();
-        public Task JoinCourse(int courseId)
+        public async Task JoinCourse(int courseId)
         {
             groups.TryAdd(this.Context.ConnectionId, courseId.ToString());
-            return this.Groups.Add(this.Context.ConnectionId, courseId.ToString());
+            await this.Groups.Add(this.Context.ConnectionId, courseId.ToString());
+            await this.SendMessage(@"User {0} has joined the video");
         }
 
         public async Task SendMessage(string message)
@@ -32,7 +33,7 @@ namespace LearnOn.SignalR
                 {
                     User = user,
                     Course = course,
-                    Text = message,
+                    Text = string.Format(message, user.UserName),
                     Time = DateTime.Now,
                 };
 

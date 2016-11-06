@@ -20,3 +20,6 @@ else
         <li>@Html.ActionLink("Log in", "Login", "Account", routeValues: new { area = "" }, htmlAttributes: new { id = "loginLink" })</li>
     </ul>
 }
+<script>
+    window.loginUserName = '@User.Identity.GetUserName()';
+</script>
