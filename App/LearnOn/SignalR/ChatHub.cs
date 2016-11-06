@@ -43,11 +43,12 @@ namespace LearnOn.SignalR
                 await db.SaveChangesAsync();
             }
         }
-        public override Task OnDisconnected(bool stopCalled)
+        public override async Task OnDisconnected(bool stopCalled)
         {
             string value;
             groups.TryRemove(this.Context.ConnectionId, out value);
-            return base.OnDisconnected(stopCalled);
+            await this.SendMessage(@"User {0} has left the video");
+            await base.OnDisconnected(stopCalled);
         }
     }
 }
